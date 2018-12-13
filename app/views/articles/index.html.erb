@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-9 mx-md-auto">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @articles.each do |article| %>
+            <tr>
+              <td><%= article.title %></td>
+              <td><%= article.user.try(:name) %></td>
+              <td>
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   Action
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <%= link_to 'Show', article,class: "dropdown-item" %>
+                    <%= link_to 'Edit', edit_article_path(article), class: "dropdown-item" %>
+                    <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' },class: "dropdown-item"  %>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

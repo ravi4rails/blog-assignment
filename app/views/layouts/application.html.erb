@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BlogAssignment</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,7 +12,8 @@
 
   <body>
     <%= render "partials/header" %>
-    <div class="mt-5 mb-5">
+    <div class="">
+      <%= render "partials/flash" %>
       <%= yield %>
     </div>
   </body>

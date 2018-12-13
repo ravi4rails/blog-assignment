@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
 
+  load_and_authorize_resource
+
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_article, only: [:show, :update, :edit, :destroy]
 

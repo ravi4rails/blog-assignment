@@ -5,5 +5,23 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   ROLES = %i[admin author default]
+
+  after_create :set_default_role
+
+  def set_default_role
+    self.update(role: 'default')
+  end
+
+  def admin?
+    self.role == 'admin'
+  end
+
+  def author?
+    self.role == 'author'
+  end
+
+  def default?
+    self.role == 'default'
+  end
          
 end

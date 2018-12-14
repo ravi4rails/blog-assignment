@@ -2,8 +2,8 @@ class UsersController < ApplicationController
 
   load_and_authorize_resource
 
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-  before_action :set_user, only: [:show, :update, :edit, :destroy, :change_role, :update_role]
+  before_action :authenticate_user!, only: [:new, :create, :destroy]
+  before_action :set_user, only: [:destroy, :change_role, :update_role]
 
   def index
     @users = User.all
@@ -13,26 +13,12 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def show
-  end
-
-  def edit
-  end
-
   def create_user
     @user = User.new(user_params)
     if @user.save
-      redirect_to user_path(@user), flash: { success: "User has been created successfully" }
+      redirect_to users_path, flash: { success: "User has been created successfully" }
     else
       render :new
-    end
-  end
-
-  def update_user
-    if @user.update(user_params)
-      redirect_to user_path(@user), flash: { success: "User has been updated successfully" }
-    else
-      render :edit
     end
   end
 

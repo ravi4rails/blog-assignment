@@ -1,0 +1,10 @@
+<%= form_for([@article, @article.comments.build]) do |form| %>
+  <%= form.hidden_field :user_id, value: current_user.id if user_signed_in? %>  
+  <div class="form-group">
+    <%= form.label 'Write a Comment' %>
+    <%= form.text_area :comment_text, class: "form-control", rows: "5" %>
+  </div>
+  <div class="form-group">
+    <%= form.submit "Sumbit", class: "btn btn-primary" %>
+  </div>
+<% end %>

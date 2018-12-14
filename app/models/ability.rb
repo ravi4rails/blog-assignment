@@ -6,10 +6,11 @@ class Ability
     if user.admin?
       can :manage, :all
     elsif user.author?
-      can [:read, :create], Article
-      can [:update, :destroy], Article, :user_id => user.id  
+      can :manage, Article, :user_id => user.id  
+      cannot :read, User
     else
       can :read, :all
+      cannot :read, User
     end
   end
 end

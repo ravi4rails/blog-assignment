@@ -1,0 +1,28 @@
+<div class="row mt-3 mb-3">
+  <div class="col-12">
+    <div class="media">
+      <%= image_tag "user.png", class: "mr-3", style: "width:50px;" %>
+      <div class="media-body">
+        <h5 class="mt-0"><%= comment.user.name %></h5>
+        <%= comment.comment_text %>
+        <div class="row">
+          <div class="col-md-6">
+            <%= comment.created_at.strftime("%b, %d, %Y")%>
+          </div>
+          <div class="col-md-6">
+            <% if can? :manage, comment.article %>
+              <%= link_to 'Destroy Comment', [comment.article, comment], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %>
+              <%= link_to 'Reply', new_comment_feedback_path(comment_id: comment.id, user_id: @article.user.id), class: "btn btn-sm btn-success", remote: true %>
+            <% end %>
+          </div>
+        </div>
+        <% if comment.comment_feedbacks.present? %>
+          <% comment.comment_feedbacks.each do |feedback| %>
+            <p><%= feedback.title %> <%= image_tag "user.png", class: "mr-3", style: "width:30px;" %></p>
+          <% end %>
+        <% end %>
+        <div id="feedBackForm_<%= comment.id %>"></div>
+      </div>
+    </div>
+  </div>
+</div>

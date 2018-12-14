@@ -4,6 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :articles, dependent: :destroy       
+  has_many :comments, dependent: :destroy
+  has_many :comment_feedbacks       
+
+
   ROLES = %i[admin author default]
 
   after_create :set_default_role

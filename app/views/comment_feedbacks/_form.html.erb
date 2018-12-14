@@ -1,0 +1,14 @@
+<%= form_for @comment_feedback do |f| %>
+
+  <%= f.hidden_field :comment_id, value: @comment.id %>
+  <%= f.hidden_field :user_id, value: @user.id %>
+  
+  <div class="form-group">
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  </div>
+
+<% end %>

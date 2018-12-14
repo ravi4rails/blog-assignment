@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   }
   root 'home#index'
 
-  resources :articles
+  resources :articles do 
+    resources :comments
+  end
   resources :users do 
     member do 
       get   :change_role
@@ -20,6 +22,8 @@ Rails.application.routes.draw do
       patch :update_user
     end
   end
+
+  resources :comment_feedbacks
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

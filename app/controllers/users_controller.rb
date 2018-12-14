@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   load_and_authorize_resource
 
   before_action :authenticate_user!, only: [:new, :create, :destroy]
-  before_action :set_user, only: [:destroy, :change_role, :update_role]
+  before_action :set_user, only: [:destroy, :change_role, :update_role, :change_status, :update_status]
 
   def index
     @users = User.all
@@ -35,6 +35,14 @@ class UsersController < ApplicationController
     redirect_to users_path, flash: { success: "Role for #{@user.name} has been changed successfully" }
   end
 
+  def change_status
+  end
+
+  def update_status
+    @user.update(user_status_param)
+    redirect_to users_path, flash: { success: "Status for #{@user.name} has been changed successfully" }
+  end
+
   private
 
     def set_user
@@ -47,6 +55,10 @@ class UsersController < ApplicationController
 
     def user_role_param
       params.require(:user).permit(:role)
+    end
+
+    def user_status_param
+      params.require(:user).permit(:status)
     end
 
 end

@@ -1,20 +1,20 @@
 <div class="modal-dialog" role="document">
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel">Update Role</h5>
+      <h5 class="modal-title" id="exampleModalLabel">Update Status</h5>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    <%= form_for @user, url: :update_role_user, method: :patch do |f| %>
+    <%= form_for @user, url: :update_status_user, method: :patch do |f| %>
       <div class="modal-body">
         <div class="form-group">
-          <%= f.label :role %>
-          <%= f.collection_select(:role, User::ROLES, :to_s, lambda{|i| i.to_s.humanize}, {prompt: "Select role"}, {class: "form-control"}) %>
+          <%= f.label :status %>
+          <%= f.collection_select(:status, User::STATUS, :to_s, lambda{|i| i.to_s.humanize}, {prompt: "Select status"}, {class: "form-control"}) %>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-primary">Change Role</button>
+        <button type="submit" class="btn btn-primary">Change Status</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     <% end %>

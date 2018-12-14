@@ -25,6 +25,7 @@
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' },class: "dropdown-item"  %>
                     <%= link_to 'Change Role', change_role_user_path(user),class: "dropdown-item", data: { toggle: "modal", target: "#changeRole", remote: true }  %>
+                    <%= link_to 'Change Status', change_status_user_path(user),class: "dropdown-item", data: { toggle: "modal", target: "#changeStatus", remote: true }  %>
                   </div>
                 </div>
               </td>
@@ -37,4 +38,7 @@
 </div>
 
 <div class="modal fade" id="changeRole" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+</div>
+
+<div class="modal fade" id="changeStatus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 </div>

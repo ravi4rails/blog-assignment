@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     member do 
       get   :change_role
       patch :update_role
+      get   :change_status
+      patch :update_status
     end
     collection do 
       post  :create_user

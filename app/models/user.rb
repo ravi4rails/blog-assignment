@@ -10,6 +10,7 @@ class User < ApplicationRecord
 
 
   ROLES = %i[admin author default]
+  STATUS = %i[active inactive blocked]
 
   after_create :set_default_role
 
